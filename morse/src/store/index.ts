@@ -1,17 +1,10 @@
-import { createStore, applyMiddleware } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import thunk from "redux-thunk";
-import transReducer from "../reducers/generalReducer";
+import { createStore } from "redux";
+// import transReducer from "../reducers/generalReducer";
+import combineReducers from "../reducers";
 
-const initialState = {};
+const store = createStore(combineReducers);
 
-const middlewares = [thunk];
-
-const store = createStore(
-  initialState,
-  composeWithDevTools(applyMiddleware(...middlewares))
-);
-
-store.dispatch<any>(transReducer());
+store.dispatch({ type: "TRANSLATE_MORSE" });
+store.dispatch({ type: "TRANSLATE_ENGLISH" });
 
 export default store;

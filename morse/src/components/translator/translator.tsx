@@ -2,15 +2,18 @@ import * as React from "react";
 import styles from "./translator.module.scss";
 import { connect } from "react-redux";
 import { IStore } from "../../reducers/generalReducer";
+import { TransEnglish } from "../../reducers/generalReducer";
 
-export interface IProps {}
-export interface IReduxProps {}
+export interface IReactProps {}
+export interface IReduxProps {
+  textToTranslate: string;
+}
 
 export interface IState {
   textToTranslate: string;
 }
 
-class Translator extends React.Component<IProps, IState> {
+class Translator extends React.Component<IReactProps & IReduxProps, IState> {
   public state = { textToTranslate: "" };
 
   render() {
@@ -20,6 +23,8 @@ class Translator extends React.Component<IProps, IState> {
       });
     };
 
+    console.log(this.props.textToTranslate);
+
     return (
       <React.Fragment>
         <div className={styles.englishDiv}>English</div>
@@ -27,15 +32,19 @@ class Translator extends React.Component<IProps, IState> {
           type="text"
           placeholder="English"
           onChange={handleChange}
-          value={this.state.textToTranslate}
+          value={this.props.textToTranslate}
         />
       </React.Fragment>
     );
   }
 }
 
-const mapStateToProps = (state: IStore, props: IReduxProps) => {
+const mapStateToProps = (state: IStore, props: IReactProps) => {
   return { textToTranslate: state.textToTranslate };
 };
+const mapDispatchToProps = { TransEnglish };
 
-export default connect(mapStateToProps)(Translator);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Translator);
