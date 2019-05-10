@@ -1,9 +1,14 @@
 import * as React from "react";
 import Translator from "../../components/translator";
 import Morse from "../../components/morse";
+import { TransEnglish } from "../../reducers/generalReducer";
+import { TransMorse } from "../../reducers/generalReducer";
 
 export interface IProps {}
-export interface IReduxProps {}
+export interface IReduxProps {
+  textToTranslate: string;
+  morseToTranslate: string;
+}
 
 export interface IState {}
 

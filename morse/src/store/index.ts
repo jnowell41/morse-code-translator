@@ -4,7 +4,7 @@ import combineReducers from "../reducers";
 
 const store = createStore(combineReducers);
 
-store.dispatch({ type: "TRANSLATE_MORSE" });
-store.dispatch({ type: "TRANSLATE_ENGLISH" });
+// store.dispatch({ type: "TRANSLATE_MORSE" });
+// store.dispatch({ type: "TRANSLATE_ENGLISH" });
 
 export default store;

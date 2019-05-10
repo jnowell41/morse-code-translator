@@ -1,7 +1,3 @@
-export interface IStore {
-  textToTranslate: string;
-  morseToTranslate: string;
-}
 export interface ITransEnglish {
   type: typeof TRANSLATE_ENGLISH;
   textToTranslate: string;
